@@ -20,14 +20,15 @@ slacker.invoke("deflate", text, function(result){
 
     console.log("COMPRESSED: " + result);
 
-    // Now invoke the inflate method to get it back to what it's original state
+    // Now invoke the inflate method to get it back to it's original state
     slacker.invoke("inflate", result, function(decompressed){
         console.log("DECOMPRESSED: " + decompressed);
     }
 })
 ```
 
-Output
+Output:
+
     UNCOMPRESSED: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
 
     COMPRESSED: MA
