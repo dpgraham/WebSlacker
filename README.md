@@ -8,25 +8,33 @@ Example
 ---------
 
 ```javascript
+
+// Instantiate the slacker method
 var slacker = new Slacker("slacker-worker.js");
+
 var text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text";
-console.log(text);
+console.log("UNCOMPRESSED: " + text);
+
+// Invoke the deflate method on a block of text
 slacker.invoke("deflate", text, function(result){
-    console.log(result);
+
+    console.log("COMPRESSED: " + result);
+
+    // Now invoke the inflate method to get it back to what it's original state
     slacker.invoke("inflate", result, function(decompressed){
-        console.log(decompressed);
+        console.log("DECOMPRESSED: " + decompressed);
     }
 })
 ```
 
-    OUTPUT:
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
+Output
+    UNCOMPRESSED: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
 
-    MA
+    COMPRESSED: MA
     0¿²7oþCðF0±4)Øß[
     B3³ûSH°e«6K¾bipzÏ	O\XõBÐo|lÖXÍK[±O©÷GÞ÷î§
 
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
+    DECOMPRESSED: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
 
 
 Description
@@ -59,24 +67,24 @@ Here's an example
 
 - slacker-worker-foo.js
 
-    ```javascript
-    (function(){
+```javascript
+(function(){
 
-        // Methods must have a params argument and success callback. The fail argument
-        // is optional, only if there is some condition where the function fails to be called.
-        var Foo = function(params, success, fail){
-            if(params=="bar"){
-                success("foobar");
-            } else{
-                fail("oops");
-            }
+    // Methods must have a params argument and success callback. The fail argument
+    // is optional, only if there is some condition where the function fails to be called.
+    var Foo = function(params, success, fail){
+        if(params=="bar"){
+            success("foobar");
+        } else{
+            fail("oops");
         }
+    }
 
-        // 'addMethod' registers 'foo' as an invokable method that calls the Foo function
-        this.Slacker.addMethod("foo", Foo);
+    // 'addMethod' registers 'foo' as an invokable method that calls the Foo function
+    this.Slacker.addMethod("foo", Foo);
 
-    }).call(this);
-    ```
+}).call(this);
+```
 
 
 This file, and any other JS files that extend this must be concatenated together with 'slacker-worker-core.js' coming first.
