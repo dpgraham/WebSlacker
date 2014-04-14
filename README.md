@@ -7,6 +7,7 @@ Use WebWorker's smart, not hard.
 Example
 ---------
 
+    ```javascript
     var slacker = new Slacker("slacker-worker.js");
     var text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text";
     console.log(text);
@@ -16,6 +17,7 @@ Example
             console.log(decompressed);
         }
     })
+    ```
 
     OUTPUT:
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
@@ -30,7 +32,7 @@ Example
 Description
 ----------
 
-WebWorkers a pretty great, but communicating with them can be a little bit cumbersome what with the constant stringifying
+WebWorkers are pretty great, but communicating with them can be a little bit cumbersome what with the constant stringifying
 and parsing, and the event handler listening, etc...
 
 What Slacker does is provides a simple interface for communicating with Web Workers. In the above example, all you had to
@@ -57,6 +59,7 @@ Here's an example
 
 - slacker-worker-foo.js
 
+    ```javascript
     (function(){
 
         // Methods must have a params argument and success callback. The fail argument
@@ -73,6 +76,7 @@ Here's an example
         this.Slacker.addMethod("foo", Foo);
 
     }).call(this);
+    ```
 
 
 This file, and any other JS files that extend this must be concatenated together with 'slacker-worker-core.js' coming first.
