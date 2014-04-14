@@ -1,5 +1,5 @@
 suite('invoke an undefined method to verify that the core code is working', function(){
-    var slacker = new Slacker("../dist/slacker-worker-all.js");
+    var slacker = new Slacker("../dist/slacker-worker.js");
     test('invoke an undefined method', function(done){
         slacker.invoke("foo", undefined, undefined, function(res){
             done();

@@ -1,7 +1,7 @@
 WebSlacker
 ==========
 
-Use WebWorker's smart, not hard.
+Use WebWorkers smart, not hard.
 
 
 Example
