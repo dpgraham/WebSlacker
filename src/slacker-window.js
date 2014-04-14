@@ -1,4 +1,12 @@
 /**
+ * SLACKER
+ *
+ * This file is loaded in the browser. Used to communicate with the web worker.
+ *
+ */
+
+
+/**
  * Constructor for slacker object
  * @param worker_url {string} Points to the URL of the Web Worker javascript asset
  * @constructor

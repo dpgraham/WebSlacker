@@ -6,6 +6,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-mocha-phantomjs');
 
     grunt.initConfig({
@@ -24,6 +25,16 @@ module.exports = function(grunt) {
             }
         },
 
+        // Copy over src files to a temporary folder
+        copy: {
+            temp: {
+                expand: true,
+                flatten: true,
+                src: ['src/*'],
+                dest: '.tmp/'
+            }
+        },
+
         concat: {
             copy: {
                 files: [{
@@ -33,6 +44,16 @@ module.exports = function(grunt) {
                     src: "src/slacker-worker-core.js",
                     dest: "dist/slacker-worker-core.js"
                 }, {
+                    src: ["app/bower_components/deflate/rawdeflate.js", "app/bower_components/deflate/rawinflate.js", ".tmp/slacker-worker-compress.js"],
+                    dest: ".tmp/slacker-worker-compress.js"
+                }, {
+                    src: [".tmp/slacker-worker-*.js", "!.tmp/slacker-worker-core.js"],
+                    dest: "dist/slacker-worker-all.js"
+                }, {
+                    src: [".tmp/slacker-worker-core.js", "dist/slacker-worker-all.js"],
+                    dest: "dist/slacker-worker-all.js"
+                }],
+            master: [{
                     src: "src/slacker-worker-*.js",
                     dest: "dist/slacker-worker-all.js"
                 }]
@@ -73,7 +94,7 @@ module.exports = function(grunt) {
     });
 
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
-    grunt.registerTask('travis', ['default', 'connect', 'mocha_phantomjs']);
+    grunt.registerTask('default', ['jshint', 'copy', 'concat', 'uglify'])
+    grunt.registerTask('travis', ['connect', 'default', 'mocha_phantomjs']);
 
 };

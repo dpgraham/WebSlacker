@@ -1,3 +1,10 @@
+/**
+ *
+ * Provides the core message passing abstraction layer.
+ *
+ * Any other files of the format 'slacker-worker-*.js' need to be bundled and included with this file.
+ *
+ */
 (function(){
 
     /**
@@ -86,6 +93,19 @@
         };
 
         self.postMessage(JSON.stringify(postMessageContents));
+    };
+
+    /**
+     * Adds a method to the worker Javascript. Used by extensions.
+     * @param methodName
+     * @param method
+     */
+    Slacker.prototype.addMethod = function(methodName, method){
+        if(this._methodHash[methodName]!==undefined){
+            throw "Method " + methodName + " is already in use.";
+        }
+
+        this._methodHash[methodName] = method;
     };
 
     // Invoke the method. It's a singleton, so invoke it just once.
