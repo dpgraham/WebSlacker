@@ -7,17 +7,17 @@ Use WebWorker's smart, not hard.
 Example
 ---------
 
-    ```javascript
-    var slacker = new Slacker("slacker-worker.js");
-    var text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text";
-    console.log(text);
-    slacker.invoke("deflate", text, function(result){
-        console.log(result);
-        slacker.invoke("inflate", result, function(decompressed){
-            console.log(decompressed);
-        }
-    })
-    ```
+```javascript
+var slacker = new Slacker("slacker-worker.js");
+var text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text";
+console.log(text);
+slacker.invoke("deflate", text, function(result){
+    console.log(result);
+    slacker.invoke("inflate", result, function(decompressed){
+        console.log(decompressed);
+    }
+})
+```
 
     OUTPUT:
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
@@ -81,3 +81,7 @@ Here's an example
 
 This file, and any other JS files that extend this must be concatenated together with 'slacker-worker-core.js' coming first.
 
+
+Endnote
+-------
+Big thanks to git://github.com/dankogai for implementing DEFLATE!
