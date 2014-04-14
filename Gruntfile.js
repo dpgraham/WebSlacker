@@ -48,14 +48,14 @@ module.exports = function(grunt) {
                     dest: ".tmp/slacker-worker-compress.js"
                 }, {
                     src: [".tmp/slacker-worker-*.js", "!.tmp/slacker-worker-core.js"],
-                    dest: "dist/slacker-worker-all.js"
+                    dest: "dist/slacker-worker.js"
                 }, {
-                    src: [".tmp/slacker-worker-core.js", "dist/slacker-worker-all.js"],
-                    dest: "dist/slacker-worker-all.js"
+                    src: [".tmp/slacker-worker-core.js", "dist/slacker-worker.js"],
+                    dest: "dist/slacker-worker.js"
                 }],
             master: [{
                     src: "src/slacker-worker-*.js",
-                    dest: "dist/slacker-worker-all.js"
+                    dest: "dist/slacker-worker.js"
                 }]
             }
         },
@@ -63,8 +63,8 @@ module.exports = function(grunt) {
         uglify: {
             target: {
                 files: [{
-                    src: 'dist/slacker-worker-all.js',
-                    dest: 'dist/slacker-worker-all.min.js'
+                    src: 'dist/slacker-worker.js',
+                    dest: 'dist/slacker-worker.min.js'
                 }, {
                     src: 'dist/slacker-window.js',
                     dest: 'dist/slacker-window.min.js'
