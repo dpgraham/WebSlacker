@@ -2,6 +2,7 @@
     "name": "WebSlacker",
     "version": "0.0.1",
     "devDependencies": {
-        "deflate": "git://github.com/dankogai/js-deflate"
+        "deflate": "git://github.com/dankogai/js-deflate",
+        "requirejs": "~2.1.11"
     }
 }

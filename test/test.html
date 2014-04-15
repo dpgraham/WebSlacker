@@ -10,6 +10,7 @@
 <div id="fixtures"></div>
 <script src="../node_modules/mocha/mocha.js"></script>
 <script src="../node_modules/chai/chai.js"></script>
+<script type='text/javascript' src="/app/bower_components/requirejs/require.js"></script>
 <script type="text/javascript">
     mocha.setup("tdd");
 </script>
@@ -18,8 +19,7 @@
 <script type="text/javascript">
     if (typeof(mochaPhantomJS)!="undefined") {
         mochaPhantomJS.run();
-    }
-    else {
+    } else {
         mocha.run();
     }
 </script>
