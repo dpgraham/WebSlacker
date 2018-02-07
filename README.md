@@ -1,6 +1,8 @@
 WebSlacker
 ==========
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/dpgraham/WebSlacker.svg)](https://greenkeeper.io/)
+
 Use WebWorkers smart, not hard.
 
 
